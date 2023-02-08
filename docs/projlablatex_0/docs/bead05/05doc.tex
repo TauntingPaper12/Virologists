@@ -1,0 +1,551 @@
+\chapter{Szkeleton tervezése}
+
+
+\section{A szkeleton modell valóságos use-case-ei}
+
+% --------------------------
+% USE-CASE DIAGRAM
+% --------------------------
+\subsection{Use-case diagram}
+\diagram{docs/img/usecasediagram.png}{Use case diagram}{16cm}
+\pagebreak
+
+\subsection{Use-case leírások}
+
+\begin{use-case}
+    %név
+    {Move}
+    %rövid leírás
+    {A virológus mozog a mezők között.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus a kiválasztott, szomszédos mezőre lép.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Randomly Move}
+    %rövid leírás
+    {A virológus véletszerűen mozog a mezők között.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus egy véletlenszerű, szomszédos mezőre lép.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Steal projlab.equipment.Equipment}
+    %rövid leírás
+    {A virológus ellop egy felszerelést.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus egy lebénult virológustól elvesz egy felszerelést.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Steal Materials}
+    %rövid leírás
+    {A virológus ellop anyagokat.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus egy lebénult virológustól elvesz anyagokat.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Can't Steal projlab.equipment.Equipment}
+    %rövid leírás
+    {A virológus nem tud lopni felszerelést.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus egy nem lebénult virológustól próbál elvenni felszerelést.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Can't Steal Materials}
+    %rövid leírás
+    {A virológus nem tud lopni anyagokat.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus egy nem lebénult virológustól próbál elvenni anyagokat.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Infect}
+    %rövid leírás
+    {A virológus megfertőz egy másik virológust.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus egy másik virológust megfertőz és az ágens elkezdi kifejteni hatását a fertőzőtt virológusra.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Infect self}
+    %rövid leírás
+    {A virológus megfertőzi önmagát.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus önmagát fertőzi meg.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Infect Protected By projlab.agent.Agent}
+    %rövid leírás
+    {A virológus megfertőz egy másik virológust, akin védő ágens van.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megfertőz egy olyan virológust, akin védő ágens van, ezért a fertőzés sikertelen.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Infect Protected By Coat And Not Expired}
+    %rövid leírás
+    {A virológus megfertőz egy másik virológust, akin köpeny van.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megfertőz egy olyan virológust, akin köpeny van és a köpeny kivédi a fertőzést.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Infect Protected By Coat And Expired}
+    %rövid leírás
+    {A virológus megfertőz egy másik virológust, akin köpeny van és elszakad.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megfertőz egy olyan virológust, akin köpeny van és a köpeny kivédi a fertőzést. A köpeny élete elfogy, ezért elszakad.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Infect Repel}
+    %rövid leírás
+    {A virológus megfertőz egy másik virológust, akinél kesztyű van.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megfertőz egy olyan virológust, akinél kesztyű van, ekkor visszafertőződik a támadó virológus és a védő virológus kesztyűje elszakad.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Infect Not Protected By Coat}
+    %rövid leírás
+    {A virológus megfertőz egy másik virológust, akin köpeny van.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megfertőz egy olyan virológust, akin köpeny van, de nem védi ki a fertőzést a köpeny.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Learn Genetic Code}
+    %rövid leírás
+    {A virológus megtanul egy új genetikai kódot.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megtanul egy új genetikai kódot.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Genetic Code Is Already Learnt}
+    %rövid leírás
+    {A virológus már ismeri a tanulni próbált genetikai kódot}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megpróbál megtanulni egy már ismert genetikai kódot.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Learn Genetic Code And Win}
+    %rövid leírás
+    {A virológus megtanulja a genetikai kódot és megnyeri a játékot}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megnyeri a játékot, ha az összes genetikai kódot megtanulta.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Pickup projlab.equipment.Equipment}
+    %rövid leírás
+    {A virológus felvesz egy felszerelést az óvóhelyen.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus felvesz egy felszerelést az óvóhelyen.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {projlab.equipment.Equipment Slots Are Full}
+    %rövid leírásw
+    {A virológus felszerelési kapacitása betelt}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    Ha már van három felszerelése a virológusnak, akkor nem tud felvenni többet.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Pickup Materials}
+    %rövid leírás
+    {A virológus felvesz anyago(ka)t a raktárból}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus felvesz nukleotidot vagy aminosavat, amit a zsebébe vagy a nála lévő zsákba tesz.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {projlab.material.Material Slots Are Full}
+    %rövid leírás
+    {A virológus anyag tárhelye tele van}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megpróbál felvenni anyago(ka)t, de sikertelenül mert nem fér el.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Drop Materials}
+    %rövid leírás
+    {A virológus eldob anyago(ka)t a lerakóhelyen}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus eldob aminosav(ak)at vagy nukleotid(ok)at.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Make Inactive projlab.agent.Agent}
+    %rövid leírás
+    {A virológus előállít egy ágenst}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus előállít egy ágenst és elveszíti azokat az anyagokat, amik az előállításhoz szükség volt.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Inactive projlab.agent.Agent Slots Are Full}
+    %rövid leírás
+    {A virológus inaktív ágens tárhelye tele van}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    Ha már van kettő ágense a virológusnak, akkor nem állíthat elő többet.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Insufficient Materials For Inactive projlab.agent.Agent}
+    %rövid leírás
+    {A virológusnak nincs elegendő anyaga az ágens létrehozásához.}
+    %aktorok
+    {Player}
+    %forgatókönyv
+    A virológus megpróbál előállítani egy ágenst, de nincsenek nála a szükséges anyagok.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {projlab.agent.Agent Step}
+    %rövid leírás
+    {Az ágensek élettartalma csökken.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    A virológuson lévő ágensek élettartalma csökken.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Inactive projlab.agent.Agent Step}
+    %rövid leírás
+    {Az inaktív ágensek élettartalma csökken.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    A virológus kezében lévő inaktív ágensek élettartalma csökken.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {projlab.agent.Agent Expired}
+    %rövid leírás
+    {Az ágens lejárt.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    Az ágens eltűnik a virológusról.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Inactive projlab.agent.Agent Expired}
+    %rövid leírás
+    {Az inaktív ágens lejárt.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    Az inaktív ágens eltűnik a virológus kezéből.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Storage Step}
+    %rövid leírás
+    {A raktár mező számlálója csökken.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    A raktár mező számlálója csökken.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Generate projlab.material.Material}
+    %rövid leírás
+    {A raktár mező anyagot generál.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    A raktár mező anyagot generál, ha a számláló nullára csökken és visszaállítja az eredeti értékére.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Stop Generating projlab.material.Material}
+    %rövid leírás
+    {A raktár mező nem generál több anyagot.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    A raktár mező abbahagyja a generálást, ha megtelt a raktár.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Shelter Step}
+    %rövid leírás
+    {Az óvóhely mező számlálója csökken.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    Az óvóhely mező számlálója csökken.
+\end{use-case}
+
+\begin{use-case}
+    %név
+    {Generate projlab.equipment.Equipment}
+    %rövid leírás
+    {Az óvóhely mező adott felszerelést generál.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    Az óvóhely mező felszerelét generál, ha a számláló nullára csökken és visszaállítja az eredeti értékére.
+\end{use-case}
+
+\begin{use-case}
+    %név>
+    {Stop Generating projlab.equipment.Equipment}
+    %rövid leírás
+    {Az óvóhely mező nem generál több felszerelést.}
+    %aktorok
+    {Controller}
+    %forgatókönyv
+    Az óvóhely mező abbahagyja a generálást, ha megtelt az óvóhely.
+\end{use-case}
+
+\section{A szkeleton kezelői felületének terve, dialógusok}
+
+A szkeleton program megjeleníti az összes use-case-eket egymás alatt sorszámozva, a felhasználónak meg kell adnia, hogy hanyadik use-case-t szeretné elindítani. Kiválasztás után a konzolban meg fog jelenni a hozzátartozó kommunikációs diagram és szekvenciadiagram. Példa a megjelenítéshez:
+
+\begin{verbatim}
+-------------------------------
+    tile = new projlab.tile.Tile()                       // új objektum létrehozása
+    virologist.Move(tile)
+        tile.GetNeighbours(): List<projlab.tile.Tile>    // egy függvény meghívása
+                                            paraméterrel, és visszatérési
+                                            típussal
+        return neighbours                   // visszatérés értékkel
+        agent.IsStunned(): bool
+            return false
+        if (stunned == false)               // feltétel ellenőrzése
+            from.Remove(virologist)
+            tile.Accept(virologist)
+        return
+    return
+-------------------------------
+\end{verbatim}
+
+
+\section{Szekvencia diagramok a belső működésre}
+
+\diagram{docs/img/usecasesd/move.png}{Move}{16cm}
+
+\diagram{docs/img/usecasesd/randomlymove.png}{Randomly Move}{16cm}
+
+\diagram{docs/img/usecasesd/stealequipment.png}{Steal projlab.equipment.Equipment}{16cm}
+
+\diagram{docs/img/usecasesd/stealmaterials.png}{Steal Materials}{16cm}
+
+\diagram{docs/img/usecasesd/cantstealequipment.png}{Can't Steal projlab.equipment.Equipment}{16cm}
+
+\diagram{docs/img/usecasesd/cantstealmaterials.png}{Can't Steal Materials}{16cm}
+
+\diagram{docs/img/usecasesd/infect.png}{Infect}{16cm}
+
+\diagram{docs/img/usecasesd/infectself.png}{Infect self}{16cm}
+
+\diagram{docs/img/usecasesd/infectprotectedbyagent.png}{Infect Protected By projlab.agent.Agent}{16cm}
+
+\diagram{docs/img/usecasesd/infectprotectedbycoatandnotexpired.png}{Infect Protected By Coat And Not Expired}{16cm}
+
+\diagram{docs/img/usecasesd/infectprotectedbycoatandexpired.png}{Infect Protected By Coat And Expired}{16cm}
+
+\diagram{docs/img/usecasesd/infectrepel.png}{Infect Repel}{16cm}
+
+\diagram{docs/img/usecasesd/infectnotprotectedbycoat.png}{Infect Not Protected By Coat}{16cm}
+
+\diagram{docs/img/usecasesd/learngeneticcode.png}{Learn Genetic Code}{16cm}
+
+\diagram{docs/img/usecasesd/geneticcodeisalreadylearnt.png}{Genetic Code Is Already Learnt}{16cm}
+
+\diagram{docs/img/usecasesd/learngeneticcodeandwin.png}{Learn Genetic Code And Win}{16cm}
+
+\diagram{docs/img/usecasesd/pickupmaterials.png}{Pickup Materials}{16cm}
+
+\diagram{docs/img/usecasesd/materialslotsarefull.png}{projlab.material.Material Slots Are Full}{16cm}
+
+\diagram{docs/img/usecasesd/pickupequipment.png}{Pickup projlab.equipment.Equipment}{16cm}
+
+\diagram{docs/img/usecasesd/equipmentslotsarefull.png}{projlab.equipment.Equipment Slots Are Full}{16cm}
+
+\diagram{docs/img/usecasesd/dropmaterials.png}{Drop Materials}{16cm}
+
+\diagram{docs/img/usecasesd/makeinactiveagent.png}{Make Inactive projlab.agent.Agent}{16cm}
+
+\diagram{docs/img/usecasesd/inactiveagentslotsarefull.png}{Inactive projlab.agent.Agent Slots Are Full}{8cm}
+
+\diagram{docs/img/usecasesd/insufficientmaterialsforinactiveagent.png}{Insufficient Materials For Inactive projlab.agent.Agent}{16cm}
+
+\diagram{docs/img/usecasesd/agentstep.png}{projlab.agent.Agent Step}{16cm}
+
+\diagram{docs/img/usecasesd/inactiveagentstep.png}{Inactive projlab.agent.Agent Step}{16cm}
+
+\diagram{docs/img/usecasesd/agentexpired.png}{projlab.agent.Agent Expired}{16cm}
+
+\diagram{docs/img/usecasesd/inactiveagentexpired.png}{Inactive projlab.agent.Agent Expired}{16cm}
+
+\diagram{docs/img/usecasesd/storagestep.png}{Storage Step}{8cm}
+
+\diagram{docs/img/usecasesd/generatematerial.png}{Generate projlab.material.Material}{16cm}
+
+\diagram{docs/img/usecasesd/stopgeneratingmaterial.png}{Stop Generating projlab.material.Material}{8cm}
+
+\diagram{docs/img/usecasesd/shelterstep.png}{Shelter Step}{8cm}
+
+\diagram{docs/img/usecasesd/generateequipment.png}{Generate projlab.equipment.Equipment}{16cm}
+
+\diagram{docs/img/usecasesd/stopgeneratingequipment.png}{Stop Generating projlab.equipment.Equipment}{8cm}
+
+% \section{Kommunikációs diagramok}
+
+% \diagram{docs/img/commdiagram/move.png}{Move Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/randomlymove.png}{Randomly Move Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/stealequipment.png}{Steal projlab.equipment.Equipment Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/stealmaterials.png}{Steal Materials Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/cantstealequipment.png}{Can't Steal projlab.equipment.Equipment Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/cantstealmaterials.png}{Can't Steal Materials Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/infect.png}{Infect Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/infectself.png}{Infect self Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/infectprotectedbyagent.png}{Infect Protected By projlab.agent.Agent Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/infectprotectedbycoatandnotexpired.png}{Infect Protected By Coat And Not Expired Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/infectprotectedbycoatandexpired.png}{Infect Protected By Coat And Expired Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/infectrepel.png}{Infect Repel Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/infectnotprotectedbycoat.png}{Infect Not Protected By Coat Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/learngeneticcode.png}{Learn Genetic Code Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/geneticcodeisalreadylearnt.png}{Genetic Code Is Already Learnt Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/learngeneticcodeandwin.png}{Learn Genetic Code And Win Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/pickupmaterials.png}{Pickup Materials Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/materialslotsarefull.png}{projlab.material.Material Slots Are Full Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/pickupequipment.png}{Pickup projlab.equipment.Equipment Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/equipmentslotsarefull.png}{projlab.equipment.Equipment Slots Are Full Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/dropmaterials.png}{Drop Materials Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/makeinactiveagent.png}{Make Inactive projlab.agent.Agent Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/inactiveagentslotsarefull.png}{Inactive projlab.agent.Agent Slots Are Full Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/insufficientmaterialsforinactiveagent.png}{Insufficient Materials For Inactive projlab.agent.Agent Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/agentstep.png}{projlab.agent.Agent Step Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/inactiveagentstep.png}{Inactive projlab.agent.Agent Step Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/agentexpired.png}{projlab.agent.Agent Expired Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/inactiveagentexpired.png}{Inactive projlab.agent.Agent Expired Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/storagestep.png}{Storage Step Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/generatematerial.png}{Generate projlab.material.Material Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/stopgeneratingmaterial.png}{Stop Generating projlab.material.Material Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/shelterstep.png}{Shelter Step Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/generateequipment.png}{Generate projlab.equipment.Equipment Comm}{16cm}
+
+% \diagram{docs/img/commdiagram/stopgeneratingequipment.png}{Stop Generating projlab.equipment.Equipment Comm}{8cm}
+
